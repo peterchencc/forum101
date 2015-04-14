@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_topic
 
   def create
+
     @comment = @topic.comments.build(comment_params)
     @comment.user = current_user
 

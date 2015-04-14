@@ -13,6 +13,7 @@
           <th> # </th>
           <th> # </th>
           <th> # </th>
+          <th> # </th>
         </tr>
       </thead>
       <tbody>
@@ -22,6 +23,7 @@
           <td> <%= link_to t.title, topic_path(t) %> </td>
           <td> <%= t.content %> </td>
           <td> <%= t.user_id %> </td>
+          <td> <%= t.comments_count %> </td>
         </tr>
         <% end %>
       </tbody>

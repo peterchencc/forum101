@@ -14,8 +14,14 @@ namespace :dev do
       users << User.create( :email => e, :password => "12345678")
     end
 
-    50.times do |t|
-         t=Topic.create(:title => Faker::Lorem.word, :content =>Faker::Lorem.paragraph, :user => users.sample )
+    50.times do |i|
+
+      t = Topic.create( :title => Faker::Lorem.word, :content =>Faker::Lorem.paragraph, :user => users.sample )
+
+      50.times do |j|
+        t.comments.create( :content =>Faker::Lorem.paragraph, :user => users.sample )
+      end
+
     end
 
   end
