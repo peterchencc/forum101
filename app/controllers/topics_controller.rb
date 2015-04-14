@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   before_action :authenticate_user!, :only => [ :new, :create, :destroy ]
 
   def index
-    @topics = Topic.all
+    @topics = Topic.page(params[:page])
   end
 
   def show
