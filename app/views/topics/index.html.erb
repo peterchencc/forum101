@@ -29,7 +29,8 @@
           <th> <%= sort_link(@q, :id, 'ID', default_order: :desc) %> </th>
           <th> Title </th>
           <th> User </th>
-          <th> <%= sort_link(@q, :comments_count, 'Comments', default_order: :desc) %> </th>
+          <th> <%= sort_link(@q, :views_count, '點閱數', default_order: :desc) %> </th>
+          <th> <%= sort_link(@q, :comments_count, '回覆筆數', default_order: :desc) %> </th>
           <th> <%= sort_link(@q, :updated_at, 'updated_at', default_order: :desc) %> </th>
         </tr>
       </thead>
@@ -38,7 +39,12 @@
         <tr>
           <td> <%= t.id %> </td>
           <td> <%= link_to t.title, topic_path(t) %> </td>
-          <td> <%= t.user_id %> </td>
+          <td>
+            <a href="">
+            <%= image_tag t.user.gravatar_url, :class => "media-object", :title => t.user.user_display_name, :size =>"30", :style =>" border-radius: 50%; display:inline;" %> <%= t.user.user_display_name %>
+            </a>
+          </td>
+          <td> <%= t.views_count %> </td>
           <td> <%= t.comments_count %> </td>
           <td> <%= t.updated_at.to_formatted_s(:short)  %></td>
         </tr>
