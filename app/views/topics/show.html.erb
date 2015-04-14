@@ -1,2 +1,37 @@
-  <h2><%= @topic.title %></h2>
+  <h2>RE: <%= @topic.title %></h2>
   <p><%= @topic.content %></p>
+  <div class="comment-form">
+    <% if @comment.errors.any? %>
+      <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= form_for @comment, :url => topic_comments_path(@topic) do |f| %>
+      <div class="form-group">
+        <%= f.label :content, "content" %>
+        <%= f.text_area :content, :class => "form-control"  %>
+      </div>
+        <%= f.submit "submit", :class =>"btn btn-primary"  %>
+    <% end %>
+  </div>
+
+
+  <div class="comment-area">
+    <% @topic.comments.each do |c| %>
+
+
+    <div class="media">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object" src="..." alt="...">
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><%= c.user.email %></h4>
+        <%= simple_format c.content %>
+      </div>
+    </div>
+    <% end %>
+  </div>
