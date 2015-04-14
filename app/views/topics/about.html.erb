@@ -1,0 +1,12 @@
+<h2>本站數據統計</h2>
+
+<p>User Count: <%= User.count %></p>
+
+<p>User : <% User.all.each do |u| %>
+          <%= u.user_display_name %>
+          <% end %>
+</p>
+
+<p>Total Topic : <%= Topic.count %></p>
+
+<p>Total Comment : <%= Comment.count %></p>

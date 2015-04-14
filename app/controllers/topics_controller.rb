@@ -2,8 +2,11 @@ class TopicsController < ApplicationController
 
   before_action :authenticate_user!, :only => [ :new, :create, :destroy ]
 
-  def index
+  def about
 
+  end
+
+  def index
     @q = Topic.ransack(params[:q])
     @topics = @q.result(distinct: true).page(params[:page])
   end
