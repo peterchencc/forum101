@@ -1,10 +1,19 @@
 <h2>Topic list</h2>
 
   <div class="group">
-    <%= link_to "新增主題", new_topic_path , :class => "btn btn-primary pull-right" %>
+    <%= link_to "新增主題", new_topic_path , :class => "btn btn-primary" %>
   </div>
   <div class="clearfix"></div>
   <div class="text-center"><%= paginate @topics %></div>
+  <div class="text-right">
+    <%= search_form_for @q do |f| %>
+
+      <%= f.label :title_cont, "search title" %>
+      <%= f.search_field :title_cont %>
+
+      <%= f.submit "GO~", :class =>"btn btn-primary btn-sm" %>
+    <% end %>
+  </div>
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
