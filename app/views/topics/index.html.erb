@@ -11,14 +11,16 @@
           <th> # </th>
           <th> # </th>
           <th> # </th>
+          <th> # </th>
         </tr>
       </thead>
       <tbody>
         <% @topics.each do |t| %>
         <tr>
-          <td> # </td>
+          <td> <%= t.id %> </td>
           <td> <%= link_to t.title, topic_path(t) %> </td>
           <td> <%= t.content %> </td>
+          <td> <%= t.user_id %> </td>
         </tr>
         <% end %>
       </tbody>

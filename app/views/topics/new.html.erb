@@ -1,4 +1,4 @@
-<div class="col-md-4 col-md-offset-4">
+<div class="">
   <h2>新增Topic</h2>
     <% if @topic.errors.any? %>
       <ul>
@@ -14,7 +14,7 @@
     </div>
     <div class="form-group">
       <%= f.label :content, "Content" %>
-      <%= f.text_area :content, :class => "form-control", :row =>15  %>
+      <%= f.text_area :content, :class => "form-control", :rows =>15  %>
     </div>
       <%= f.submit "submit", :class =>"btn btn-primary"  %>
   <% end %>
