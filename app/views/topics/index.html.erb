@@ -4,7 +4,6 @@
     <%= link_to "新增主題", new_topic_path , :class => "btn btn-primary" %>
   </div>
   <div class="clearfix"></div>
-  <div class="text-center"><%= paginate @topics %></div>
   <div class="text-right">
     <%= search_form_for @q do |f| %>
 
@@ -14,6 +13,15 @@
       <%= f.submit "GO~", :class =>"btn btn-primary btn-sm" %>
     <% end %>
   </div>
+
+  <ul class="nav nav-tabs">
+    <li role="presentation"><%= link_to "All", topics_path %></li>
+    <% Category.all.each do |c| %>
+    <li role="presentation"><%= link_to c.name, topics_path(:cid => c.id) %></li>
+    <% end %>
+  </ul>
+
+
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
@@ -21,7 +29,7 @@
           <th> <%= sort_link(@q, :id, 'ID', default_order: :desc) %> </th>
           <th> Title </th>
           <th> User </th>
-          <th> <%= sort_link(@q, :comments_count, 'Views', default_order: :desc) %> </th>
+          <th> <%= sort_link(@q, :comments_count, 'Comments', default_order: :desc) %> </th>
           <th> <%= sort_link(@q, :updated_at, 'updated_at', default_order: :desc) %> </th>
         </tr>
       </thead>
@@ -38,6 +46,9 @@
       </tbody>
     </table>
   </div>
+
+
+  <div class="text-center"><%= paginate @topics %></div>
 
 
 
