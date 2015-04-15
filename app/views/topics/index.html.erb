@@ -40,9 +40,8 @@
           <td> <%= t.id %> </td>
           <td> <%= link_to t.title, topic_path(t) %> </td>
           <td>
-            <a href="">
-            <%= image_tag t.user.gravatar_url, :class => "media-object", :title => t.user.user_display_name, :size =>"30", :style =>" border-radius: 50%; display:inline;" %> <%= t.user.user_display_name %>
-            </a>
+            <%= image_tag t.user.gravatar_url, :class => "media-object", :title => t.user.user_display_name, :size =>"30", :style =>" border-radius: 50%; display:inline;" %>
+            <%= link_to t.user.user_display_name, user_path(t.user_id) %>
           </td>
           <td> <%= t.views_count %> </td>
           <td> <%= t.comments_count %> </td>

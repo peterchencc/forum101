@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :comments
 
   def user_display_name
-    self.email.split("@").first
+    nickname || self.email.split("@").first
   end
 
 end
